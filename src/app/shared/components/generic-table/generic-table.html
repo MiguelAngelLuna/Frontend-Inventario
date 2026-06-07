@@ -1,0 +1,98 @@
+<div class="generic-view-container">
+
+  <div class="filters-card">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Buscar PC, laptops, componentes...">
+    </div>
+    
+    <div class="toolbar-actions">
+      <select class="custom-select">
+        <option>Todas las categorías</option>
+        <option>Laptops</option>
+        <option>Componentes</option>
+      </select>
+      <button class="btn-export" (click)="onExport.emit()">
+        📥 Exportar a Excel
+      </button>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            @for (col of columns; track col.field) {
+              <th><span class="header-chip">{{ col.header }}</span></th>
+            }
+            <th><span class="header-chip">ACCIONES</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of data; track row.id) {
+            <tr [class.inactive-row]="!row.activo">
+              @for (col of columns; track col.field) {
+                <td>
+                  @if (col.isChip) {
+                    <span class="chip" [ngClass]="getChipColor(row[col.field])">{{ row[col.field] }}</span>
+                  } 
+                  
+                  @else if (col.isStock) {
+                    <span class="chip font-bold" [ngClass]="getStockColor(row[col.field])">
+                      {{ row[col.field] }} und
+                    </span>
+                  }
+                  
+                  @else if (col.isStatus) {
+                    <div class="status-cell">
+                      <label class="switch">
+                        <input type="checkbox" [checked]="row[col.field]" (click)="handleToggle($event, row)">
+                        <span class="slider"></span>
+                      </label>
+                      <span class="status-text" [class.text-green]="row[col.field]" [class.text-red]="!row[col.field]">
+                        {{ row[col.field] ? 'Activo' : 'Inactivo' }}
+                      </span>
+                    </div>
+                  }
+
+                  @else if (col.isCurrency) {
+                    <span class="font-bold">S/ {{ row[col.field] | number:'1.2-2' }}</span>
+                  } 
+                  
+                  @else {
+                    {{ row[col.field] }}
+                  }
+                </td>
+              }
+              
+              <td class="actions-cell">
+                <button class="btn-edit" (click)="onEdit.emit(row)">📝 Editar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-footer">
+      <div class="rows-selector">
+        Mostrar 
+        <select class="custom-select small">
+          <option>10</option>
+          <option>15</option>
+          <option>20</option>
+        </select>
+        registros
+      </div>
+      
+      <div class="pagination-controls">
+        <button class="btn-page" disabled>Anterior</button>
+        <button class="btn-page active">1</button>
+        <button class="btn-page">2</button>
+        <button class="btn-page">Siguiente</button>
+      </div>
+    </div>
+  </div>
+
+</div>

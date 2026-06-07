@@ -1,0 +1,18 @@
+<div class="page-header" style="margin-bottom: 2rem; display: flex; justify-content: space-between;">
+  <div>
+    <h1 style="font-size: 1.8rem; font-weight: 600; margin: 0;">Inventario Tecnológico</h1>
+    <p style="color: #64748b; margin-top: 0.5rem;">Gestiona componentes, laptops y periféricos</p>
+  </div>
+  <button style="background: #2563eb; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem;">
+    + Nuevo Componente
+  </button>
+</div>
+
+<app-generic-table 
+  [columns]="misColumnas" 
+  [data]="misProductos" 
+  [totalRecords]="245"
+  (onEdit)="editarProducto($event)"
+  (onToggleStatus)="confirmarCambioEstado($event)"
+  (onExport)="exportarExcel()">
+</app-generic-table>

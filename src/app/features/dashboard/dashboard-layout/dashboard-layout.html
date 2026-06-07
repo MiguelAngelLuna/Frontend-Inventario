@@ -1,0 +1,72 @@
+<div class="layout-container">
+  
+  <aside class="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <img src="imgs/logo_sistema.png" alt="Logo InventoryPro">
+      </div>
+      
+      @if (!isSidebarCollapsed) {
+        <h2 class="logo-text">AURA INVENTORY</h2>
+      }
+    </div>
+
+    <nav class="menu">
+      <a routerLink="/dashboard/home" routerLinkActive="active" class="menu-item">
+        <span class="icon">📊</span>
+        @if (!isSidebarCollapsed) {
+          <span class="text">Dashboard</span>
+        }
+      </a>
+
+      <a routerLink="/dashboard/inventario" routerLinkActive="active" class="menu-item">
+        <span class="icon">📋</span>
+        @if (!isSidebarCollapsed) {
+          <span class="text">Inventario</span>
+        }
+      </a>
+
+      <a routerLink="/dashboard/movimientos" routerLinkActive="active" class="menu-item">
+        <span class="icon">🔄</span>
+        @if (!isSidebarCollapsed) {
+          <span class="text">Movimientos</span>
+        }
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="avatar">AD</div>
+      @if (!isSidebarCollapsed) {
+        <div class="user-info">
+          <span class="name">Admin</span>
+          <span class="role">Administrador</span>
+        </div>
+      }
+    </div>
+  </aside>
+
+  <main class="main-wrapper">
+    
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn" (click)="toggleSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="topbar-right">
+        <button class="notification-btn">
+          <span>🔔</span>
+          <div class="badge">3</div>
+        </button>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+
+  </main>
+</div>

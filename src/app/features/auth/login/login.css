@@ -1,0 +1,283 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* --- LADO IZQUIERDO--- */
+.left-side {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem;
+  overflow: hidden;
+  color: white;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Tinte azul oscuro video de fondo */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(21, 76, 171, 0.85) 0%, rgba(13, 47, 112, 0.9) 100%);
+  z-index: 2;
+}
+
+.content-text {
+  position: relative;
+  z-index: 3;
+  max-width: 550px;
+}
+
+.content-text h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+.main-subtitle {
+  font-size: 1.15rem;
+  opacity: 0.9;
+  margin: 0 0 3.5rem 0;
+  line-height: 1.5;
+}
+
+/* Lista de características*/
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.icon-box {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.75rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.feature-item h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem 0;
+}
+
+.feature-item p {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin: 0;
+}
+
+
+/* ---LADO DERECHO--- */
+.right-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 2rem;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Icono de candado azul */
+.lock-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.blue-icon-box {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.9rem;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.blue-icon-box svg {
+  width: 26px;
+  height: 26px;
+}
+
+.form-card h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.form-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0 2.5rem 2.5rem 2.5rem;
+  text-align: center;
+}
+
+/* Grupos de Inputs */
+.input-field-group {
+  margin-bottom: 1.25rem;
+}
+
+.input-field-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+/* Input con borde azul*/
+.focus-blue {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+.input-icon {
+  padding-left: 1rem;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 0.75rem;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #1e293b;
+  outline: none;
+}
+
+.input-wrapper input::placeholder {
+  color: #94a3b8;
+}
+
+.password-toggle {
+  padding-right: 1rem;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Checkbox y Olvidaste Contraseña */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.checkbox-label {
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.forgot-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Botón Ingresar */
+.submit-button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #1d4ed8;
+}
+
+.footer-login {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+
+@media (max-width: 900px) {
+  .left-side {
+    display: none; 
+  }
+}

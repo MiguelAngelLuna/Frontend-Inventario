@@ -1,0 +1,212 @@
+/* Contenedor Principal */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Cabecera */
+.page-header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.25rem 0;
+}
+
+.page-header p {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Grillas Generales */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 1.5rem;
+}
+
+.alerts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Estilos Compartidos de Tarjetas (Efecto Flotante) */
+.kpi-card, .chart-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  /* La magia está en esta sombra difuminada */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
+  border: 1px solid #f1f5f9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Tarjetas KPI (Top) */
+.kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon-box {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Colores de Iconos */
+.green-light { background-color: #dcfce7; }
+.green-text { color: #16a34a; }
+.blue-light { background-color: #dbeafe; }
+.blue-text { color: #2563eb; }
+.purple-light { background-color: #f3e8ff; }
+.purple-text { color: #9333ea; }
+
+/* Tendencias */
+.trend {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.trend.positive { color: #16a34a; }
+.trend.neutral { color: #64748b; }
+
+.kpi-title {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0 0 0.5rem 0;
+}
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.kpi-subtitle {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Tarjetas de Gráficos y Tablas */
+.chart-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Gráfico de Barras Simulado (Puro CSS) */
+.css-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 200px;
+  padding-bottom: 25px;
+  border-bottom: 1px dashed #e2e8f0;
+  position: relative;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  width: 30px;
+}
+
+.bar {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.5s ease;
+}
+
+.bar.red { background-color: #ef4444; }
+
+.bar-group span {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 10px;
+}
+
+/* Placeholder para la gráfica de línea */
+.chart-placeholder {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+  color: #94a3b8;
+}
+
+.placeholder-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Alertas y Tablas bottom */
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert-header .chart-title {
+  margin: 0;
+}
+
+.alert-icon {
+  background: #fffbeb;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.warning-text { color: #f59e0b; font-weight: bold; }
+.danger-text { color: #ef4444; font-weight: bold; }
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
