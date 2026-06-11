@@ -1,10 +1,14 @@
-<div class="page-header" style="margin-bottom: 2rem; display: flex; justify-content: space-between;">
-  <div>
-    <h1 style="font-size: 1.8rem; font-weight: 600; margin: 0;">Inventario Tecnológico</h1>
-    <p style="color: #64748b; margin-top: 0.5rem;">Gestiona componentes, laptops y periféricos</p>
+<div class="page-header">
+  <div class="header-content">
+    <h1 class="page-title">Inventario Tecnológico</h1>
+    <p class="page-subtitle">Gestiona componentes, laptops y periféricos</p>
   </div>
-  <button style="background: #2563eb; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem;">
-    + Nuevo Componente
+  
+  <button class="btn-primary" (click)="abrirModalCrear()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+    </svg>
+    Nuevo Componente
   </button>
 </div>
 
@@ -16,3 +20,11 @@
   (onToggleStatus)="confirmarCambioEstado($event)"
   (onExport)="exportarExcel()">
 </app-generic-table>
+
+@if (mostrarFormulario) {
+  <app-product-form 
+    [productToEdit]="productoSeleccionado" 
+    (onClose)="cerrarModal()" 
+    (onSave)="guardarProducto($event)">
+  </app-product-form>
+}

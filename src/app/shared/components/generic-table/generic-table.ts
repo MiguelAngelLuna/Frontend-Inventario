@@ -23,7 +23,59 @@ export class GenericTable {
 
   @Output() onEdit = new EventEmitter<any>();
   @Output() onToggleStatus = new EventEmitter<any>();
-  @Output() onExport = new EventEmitter<void>();
+
+  @Output() onExport = new EventEmitter<any[]>();
+
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+
+  selectedItems: any[] = [];
+
+  get paginatedData(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.data.slice(startIndex, endIndex); 
+  }
+  get totalPages(): number {
+    return Math.ceil(this.data.length / this.itemsPerPage);
+  }
+
+  toggleSelection(row: any, event: any) {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      this.selectedItems.push(row);
+    } else {
+      this.selectedItems = this.selectedItems.filter(item => item.id !== row.id);
+    }
+  }
+
+  toggleAll(event: any) {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      this.selectedItems = [...this.paginatedData];
+    } else {
+      this.selectedItems = [];
+    }
+  }
+
+  isSelected(row: any): boolean {
+    return this.selectedItems.some(item => item.id === row.id);
+  }
+
+  get isAllSelected(): boolean {
+    return this.paginatedData.length > 0 && this.selectedItems.length === this.paginatedData.length;
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+  
+  onItemsPerPageChange(event: any) {
+    this.itemsPerPage = Number(event.target.value);
+    this.currentPage = 1; // Si cambia la cantidad, regresamos a la página 1
+  }
 
   getChipColor(category: string): string {
       const colors: { [key: string]: string } = {

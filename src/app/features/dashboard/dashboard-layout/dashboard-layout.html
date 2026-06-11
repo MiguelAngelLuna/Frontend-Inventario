@@ -1,49 +1,6 @@
 <div class="layout-container">
   
-  <aside class="sidebar" [class.collapsed]="isSidebarCollapsed">
-    <div class="logo-area">
-      <div class="logo-icon">
-        <img src="imgs/logo_sistema.png" alt="Logo InventoryPro">
-      </div>
-      
-      @if (!isSidebarCollapsed) {
-        <h2 class="logo-text">AURA INVENTORY</h2>
-      }
-    </div>
-
-    <nav class="menu">
-      <a routerLink="/dashboard/home" routerLinkActive="active" class="menu-item">
-        <span class="icon">📊</span>
-        @if (!isSidebarCollapsed) {
-          <span class="text">Dashboard</span>
-        }
-      </a>
-
-      <a routerLink="/dashboard/inventario" routerLinkActive="active" class="menu-item">
-        <span class="icon">📋</span>
-        @if (!isSidebarCollapsed) {
-          <span class="text">Inventario</span>
-        }
-      </a>
-
-      <a routerLink="/dashboard/movimientos" routerLinkActive="active" class="menu-item">
-        <span class="icon">🔄</span>
-        @if (!isSidebarCollapsed) {
-          <span class="text">Movimientos</span>
-        }
-      </a>
-    </nav>
-
-    <div class="sidebar-footer">
-      <div class="avatar">AD</div>
-      @if (!isSidebarCollapsed) {
-        <div class="user-info">
-          <span class="name">Admin</span>
-          <span class="role">Administrador</span>
-        </div>
-      }
-    </div>
-  </aside>
+  <app-sidebar [isCollapsed]="isSidebarCollapsed"></app-sidebar>
 
   <main class="main-wrapper">
     
@@ -56,11 +13,24 @@
         </button>
       </div>
 
-      <div class="topbar-right">
-        <button class="notification-btn">
-          <span>🔔</span>
-          <div class="badge">3</div>
+      <div class="topbar-right" style="position: relative;">
+  
+        <button class="notification-btn" (click)="toggleNotifications()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:24px;height:24px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+          </svg>
+          @if (notificacionesNoLeidas > 0) {
+            <div class="badge">{{ notificacionesNoLeidas }}</div>
+          }
         </button>
+
+        @if (isNotificationOpen) {
+          <app-notifications-panel 
+            (onClose)="toggleNotifications()"
+            (onMarkAllRead)="limpiarCampana()">
+          </app-notifications-panel>
+        }
+
       </div>
     </header>
 
