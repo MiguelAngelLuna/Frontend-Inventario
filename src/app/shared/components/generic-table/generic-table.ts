@@ -21,11 +21,19 @@ export class GenericTable {
   @Input() data: any[] = [];            
   @Input() totalRecords: number = 0;    
 
+
+  @Input() searchPlaceholder: string = 'Buscar...';
+  @Input() filterSelectPlaceholder: string = 'Todas las opciones';
+  @Input() filterOptions: string[] = [];
+
   @Output() onEdit = new EventEmitter<any>();
   @Output() onToggleStatus = new EventEmitter<any>();
 
   @Output() onExport = new EventEmitter<any[]>();
 
+  @Output() onSearch = new EventEmitter<{term: string, filter: string}>();
+  @Output() onClearFilters = new EventEmitter<void>();
+  
   currentPage: number = 1;
   itemsPerPage: number = 10;
 

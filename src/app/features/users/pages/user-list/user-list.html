@@ -1,0 +1,24 @@
+<div class="page-header">
+  <div class="header-content">
+    <h1 class="page-title">Gestión de Usuarios</h1>
+    <p class="page-subtitle">Administra los accesos y roles del sistema</p>
+  </div>
+  
+  <button class="btn-primary">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M18 19.5v-1.5c0-1.242-1.008-2.25-2.25-2.25H8.25m3.75-9.75v1.5m0 0v1.5m0-1.5h-1.5m1.5 0h1.5m-3 8.25h6m-6 0c-1.242 0-2.25-1.008-2.25-2.25V16.5m10.5 3h-10.5M12 9A3 3 0 1 0 12 3a3 3 0 0 0 0 6Z" />
+    </svg>
+    Nuevo Usuario
+  </button>
+</div>
+
+<app-generic-table 
+  [columns]="columnasUsuarios" 
+  [data]="listaDeUsuarios" 
+  searchPlaceholder="Buscar por nombre, DNI o correo..." 
+  filterSelectPlaceholder="Todos los roles" 
+  [filterOptions]="['Administrador', 'Vendedor', 'Almacenero']"
+  (onEdit)="editarUsuario($event)"
+  (onToggleStatus)="cambiarEstadoUsuario($event)"
+  (onExport)="exportarUsuarios($event)">
+</app-generic-table>

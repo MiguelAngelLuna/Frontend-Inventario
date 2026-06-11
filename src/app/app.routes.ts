@@ -17,6 +17,10 @@ export const routes: Routes = [
         path: 'inventario',
         loadComponent: () => import('./features/inventory/pages/product-list/product-list').then(m => m.ProductList)
       },
+      {
+        path: 'usuarios',
+        loadComponent: () => import('./features/users/pages/user-list/user-list').then(m => m.UserList)
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' }
     ]
   },

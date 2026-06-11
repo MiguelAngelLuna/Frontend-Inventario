@@ -78,7 +78,7 @@ export class ProductList {
     this.cerrarModal();
   }
 
-  exportarExcel() { alert('Generando reporte Excel...'); }
+  exportarExcel(productosSeleccionados: any[]) { alert('Generando reporte Excel...'); }
   
   confirmarCambioEstado(producto: any) {
     const accion = producto.activo ? 'desactivar' : 'activar';

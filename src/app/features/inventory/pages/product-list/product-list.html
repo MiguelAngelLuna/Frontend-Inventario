@@ -15,10 +15,12 @@
 <app-generic-table 
   [columns]="misColumnas" 
   [data]="misProductos" 
-  [totalRecords]="245"
+  searchPlaceholder="Buscar componente, laptop o código..." 
+  filterSelectPlaceholder="Todas las categorías" 
+  [filterOptions]="['Laptops', 'Componentes', 'Monitores', 'Periféricos']"
   (onEdit)="editarProducto($event)"
   (onToggleStatus)="confirmarCambioEstado($event)"
-  (onExport)="exportarExcel()">
+  (onExport)="exportarExcel($event)">
 </app-generic-table>
 
 @if (mostrarFormulario) {
